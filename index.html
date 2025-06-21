@@ -60,7 +60,7 @@
         
         .modal-content {
             background-color: var(--darker);
-            padding: 40px;
+            padding: 30px;
             border-radius: 12px;
             width: 90%;
             max-width: 800px;
@@ -85,12 +85,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             grid-column: 1 / -1;
         }
         
         .modal-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--light);
         }
         
@@ -103,25 +103,25 @@
         }
         
         .modal-steps {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .modal-step {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             align-items: flex-start;
         }
         
         .step-number {
             background-color: var(--primary);
             color: white;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 12px;
             flex-shrink: 0;
             font-size: 0.8rem;
         }
@@ -133,28 +133,30 @@
         .step-content h4 {
             margin-bottom: 5px;
             color: var(--light);
+            font-size: 0.95rem;
         }
         
         .step-content p {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
         
         .modal-form {
-            margin-top: 30px;
+            margin-top: 20px;
         }
         
         .modal-form input,
         .modal-form textarea,
         .modal-form select {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin-bottom: 12px;
             background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             color: var(--light);
-            font-size: 14px;
+            font-size: 13px;
         }
         
         /* Dark-themed select dropdown */
@@ -165,7 +167,7 @@
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 10px center;
-            background-size: 20px;
+            background-size: 15px;
             padding-right: 30px;
         }
         
@@ -175,7 +177,7 @@
         }
         
         .modal-payment {
-            margin-top: 30px;
+            margin-top: 20px;
             text-align: center;
         }
         
@@ -183,12 +185,13 @@
             background-color: var(--success);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 10px 20px;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s;
             width: 100%;
+            font-size: 14px;
         }
         
         .modal-payment-button:hover {
@@ -197,34 +200,35 @@
         
         .doubts-section {
             background-color: rgba(255, 255, 255, 0.03);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            margin-top: 30px;
+            margin-top: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .doubts-section h4 {
             color: var(--light);
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
         }
         
         .doubts-section p {
             color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
         
         .email-link {
             display: inline-block;
             background-color: var(--primary);
             color: white;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         
         .email-link:hover {
@@ -232,7 +236,8 @@
         }
         
         .email-link i {
-            margin-right: 8px;
+            margin-right: 6px;
+            font-size: 0.8rem;
         }
 
         /* Header */
@@ -804,21 +809,72 @@
                 grid-template-columns: 1fr;
             }
             
+            /* Modal mobile optimizations */
             .modal-content {
                 grid-template-columns: 1fr;
-                padding: 30px 20px;
+                padding: 20px;
+                gap: 20px;
+                max-height: 85vh;
             }
             
             .modal-left {
                 border-right: none;
                 padding-right: 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding-bottom: 30px;
-                margin-bottom: 30px;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
             }
             
             .modal-right {
                 padding-left: 0;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .modal-step {
+                margin-bottom: 12px;
+            }
+            
+            .step-number {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .step-content h4 {
+                font-size: 0.85rem;
+            }
+            
+            .step-content p {
+                font-size: 0.75rem;
+            }
+            
+            .modal-form input,
+            .modal-form textarea,
+            .modal-form select {
+                padding: 8px;
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            
+            .modal-payment-button {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .doubts-section h4 {
+                font-size: 0.85rem;
+            }
+            
+            .doubts-section p {
+                font-size: 0.75rem;
+            }
+            
+            .email-link {
+                padding: 6px 10px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -896,23 +952,23 @@
                     </a>
                 </div>
                 
-                <div style="margin-top: 30px;">
-                    <h4 style="color: var(--light); margin-bottom: 15px; font-size: 1.1rem;">What happens after payment?</h4>
-                    <ul style="list-style: none; color: var(--gray); font-size: 0.9rem; line-height: 1.7;">
-                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
-                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: var(--light); margin-bottom: 12px; font-size: 0.95rem;">What happens after payment?</h4>
+                    <ul style="list-style: none; color: var(--gray); font-size: 0.8rem; line-height: 1.6;">
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
                             You'll receive a confirmation email with payment receipt
                         </li>
-                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
-                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
                             We'll send you a detailed questionnaire about your requirements
                         </li>
-                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
-                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
                             Our designer will contact you within 24 hours to discuss your project
                         </li>
-                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
-                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
                             You'll get regular updates throughout the development process
                         </li>
                     </ul>
