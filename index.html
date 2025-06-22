@@ -32,11 +32,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
-        }
-
-        html {
-            overflow-x: hidden;
-            width: 100%;
+            position: relative;
         }
 
         .template-card a {
@@ -45,7 +41,7 @@
         }
         
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -213,7 +209,7 @@
         nav.mobile-nav ul li a {
             color: var(--light);
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 500;
             position: relative;
             padding: 10px 20px;
@@ -260,6 +256,269 @@
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
         
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            opacity: 1;
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: var(--darker);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-left {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 30px;
+        }
+        
+        .modal-right {
+            padding-left: 30px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.3rem;
+            color: var(--light);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--light);
+            transform: rotate(90deg);
+        }
+        
+        .modal-steps {
+            margin-bottom: 20px;
+        }
+        
+        .modal-step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 5px;
+            color: var(--light);
+            font-size: 0.95rem;
+        }
+        
+        .step-content p {
+            color: var(--gray);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .modal-form {
+            margin-top: 20px;
+        }
+        
+        .modal-form input,
+        .modal-form textarea,
+        .modal-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--light);
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        .modal-form input:focus,
+        .modal-form textarea:focus,
+        .modal-form select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+            outline: none;
+        }
+        
+        /* Dark-themed select dropdown */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+            padding-right: 30px;
+        }
+        
+        select option {
+            background-color: var(--darker);
+            color: var(--light);
+        }
+        
+        .modal-payment {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .modal-payment-button {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-payment-button:hover {
+            background-color: #0ea371;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .modal-payment-button:active {
+            transform: translateY(0);
+        }
+        
+        .modal-payment-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .modal-payment-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .doubts-section {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .doubts-section h4 {
+            color: var(--light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .doubts-section p {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .email-link {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+        }
+        
+        .email-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .email-link i {
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(to bottom, var(--darker), var(--dark));
@@ -351,6 +610,68 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
         
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+        
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation: float 18s infinite ease-in-out reverse;
+        }
+        
+        .shape:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            top: 80%;
+            left: 20%;
+            animation: float 12s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation: float 20s infinite ease-in-out reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(10deg);
+            }
+        }
+        
         /* Services Section */
         .services {
             padding: 100px 0;
@@ -420,8 +741,8 @@
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.1);
         }
         
@@ -431,11 +752,33 @@
             color: var(--light);
         }
         
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
         .service-card .price {
             font-size: 2.3rem;
             font-weight: 700;
-            margin-bottom: 5px;
             color: var(--light);
+        }
+        
+        .original-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: var(--gray);
+            opacity: 0.7;
+        }
+        
+        .discount-badge {
+            background-color: var(--success);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
         .service-card .price span {
@@ -490,12 +833,86 @@
             font-size: 15px;
             cursor: pointer;
             border: none;
+            position: relative;
+            overflow: hidden;
         }
         
         .service-card .card-button:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .service-card .card-button:active {
+            transform: translateY(0);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--darker);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.03);
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question h3 {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin: 0;
+        }
+        
+        .faq-question i {
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 300px;
         }
         
         /* About Section */
@@ -593,74 +1010,6 @@
             font-size: 0.9rem;
         }
         
-        /* FAQ Section */
-        .faq {
-            padding: 100px 0;
-            background-color: var(--dark);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: var(--darker);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-        
-        .faq-item:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.03);
-            transition: background-color 0.3s;
-        }
-        
-        .faq-question:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .faq-question h3 {
-            font-size: 1.1rem;
-            color: var(--light);
-            margin: 0;
-        }
-        
-        .faq-question i {
-            color: var(--accent);
-            transition: transform 0.3s;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 0 20px 20px;
-            max-height: 300px;
-        }
-        
         /* Templates Section */
         .templates {
             padding: 100px 0;
@@ -684,8 +1033,8 @@
         }
         
         .template-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
         .template-img {
@@ -759,6 +1108,7 @@
         
         .template-button:hover {
             color: var(--primary);
+            transform: translateX(5px);
         }
         
         /* Contact Section */
@@ -805,6 +1155,11 @@
             align-items: center;
             margin-bottom: 15px;
             color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        .contact-item:hover {
+            color: var(--light);
         }
         
         .contact-item i {
@@ -836,6 +1191,7 @@
             background-color: var(--primary);
             color: var(--light);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
         
         .contact-form input,
@@ -858,6 +1214,7 @@
             outline: none;
             border-color: var(--primary);
             background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
         }
         
         .contact-form textarea {
@@ -876,10 +1233,18 @@
             transition: all 0.3s;
             font-size: 15px;
             width: 100%;
+            position: relative;
+            overflow: hidden;
         }
         
         .contact-form button:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .contact-form button:active {
+            transform: translateY(0);
         }
         
         /* Footer */
@@ -900,6 +1265,19 @@
             margin-bottom: 20px;
             font-size: 1.1rem;
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
         
         .footer-col ul {
@@ -913,12 +1291,28 @@
         .footer-col ul li a {
             color: var(--gray);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .footer-col ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s;
         }
         
         .footer-col ul li a:hover {
             color: var(--light);
+        }
+        
+        .footer-col ul li a:hover::after {
+            width: 100%;
         }
         
         .footer-bottom {
@@ -951,6 +1345,7 @@
             visibility: hidden;
             transform: translateY(20px);
             z-index: 99;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
         
         .scroll-top.active {
@@ -961,6 +1356,7 @@
         
         .scroll-top:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-5px) !important;
         }
         
         /* Responsive */
@@ -1014,6 +1410,81 @@
                 grid-template-columns: 1fr;
             }
             
+            /* Modal mobile optimizations */
+            .modal-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 20px;
+                max-height: 85vh;
+            }
+            
+            .modal-left {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .modal-right {
+                padding-left: 0;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .modal-step {
+                margin-bottom: 12px;
+            }
+            
+            .step-number {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .step-content h4 {
+                font-size: 0.85rem;
+            }
+            
+            .step-content p {
+                font-size: 0.75rem;
+            }
+            
+            .modal-form input,
+            .modal-form textarea,
+            .modal-form select {
+                padding: 8px;
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            
+            .modal-payment-button {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .doubts-section h4 {
+                font-size: 0.85rem;
+            }
+            
+            .doubts-section p {
+                font-size: 0.75rem;
+            }
+            
+            .email-link {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .scroll-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
             /* Mobile nav items */
             nav.mobile-nav ul li a {
                 font-size: 1.3rem;
@@ -1050,10 +1521,120 @@
             nav.mobile-nav ul li a {
                 font-size: 1.2rem;
             }
+            
+            .service-card {
+                padding: 30px 20px;
+            }
+            
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal" id="packageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalPackageTitle">Get Your Website</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="modal-left">
+                <div class="modal-steps">
+                    <div class="modal-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Make Payment</h4>
+                            <p>Secure payment processed through trusted payment gateway.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Project Details</h4>
+                            <p>Tell us about your requirements and preferences in the form sent to your mail.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Initial Delivery</h4>
+                            <p>Receive your website draft within 48 hours for review and feedback.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Final Delivery</h4>
+                            <p>Get your polished, final website after incorporating your feedback.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-form">
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Phone Number" required>
+                    <textarea placeholder="Tell us about your website requirements..." required></textarea>
+                    <select required>
+                        <option value="" disabled selected>Select Your Industry</option>
+                        <option value="student">Final Year Student</option>
+                        <option value="internship">Designer Portfolio</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="modal-payment">
+                    <button class="modal-payment-button" id="modalPaymentButton">Pay $150</button>
+                </div>
+            </div>
+            
+            <div class="modal-right">
+                <div class="doubts-section">
+                    <h4>Have doubts about the process?</h4>
+                    <p>We're happy to answer any questions you might have about our services or the development process.</p>
+                    <p>Feel free to email us directly and we'll get back to you within 24 hours.</p>
+                    <a href="mailto:contact.logiclinksolutions@gmail.com" class="email-link">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4 style="color: var(--light); margin-bottom: 12px; font-size: 0.95rem;">What happens after payment?</h4>
+                    <ul style="list-style: none; color: var(--gray); font-size: 0.8rem; line-height: 1.6;">
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
+                            You'll receive a confirmation email with payment receipt
+                        </li>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
+                            We'll send you a detailed questionnaire about your requirements
+                        </li>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
+                            Our designer will contact you within 24 hours to discuss your project
+                        </li>
+                        <li style="margin-bottom: 8px; position: relative; padding-left: 22px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success); font-size: 0.7rem;"></i>
+                            You'll get regular updates throughout the development process
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1092,6 +1673,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
         <div class="container hero-content">
             <h1>Professional Web Solutions for Your Career Growth</h1>
             <p>We design high-quality websites for final year students, internship applicants, and freelancers to showcase their skills and stand out in competitive markets.</p>
@@ -1113,7 +1700,11 @@
                 <!-- 1 Year Package -->
                 <div class="service-card">
                     <h3>Starter Package</h3>
-                    <div class="price">$150 <span>/ year</span></div>
+                    <div class="price-container">
+                        <div class="original-price">$200</div>
+                        <div class="price">$150</div>
+                        <div class="discount-badge">Save $50</div>
+                    </div>
                     <div class="duration">Ideal for short-term projects</div>
                     <ul>
                         <li>1 Professional Design</li>
@@ -1130,7 +1721,11 @@
                 <!-- 3 Year Package -->
                 <div class="service-card">
                     <h3>Professional Package</h3>
-                    <div class="price">$375 <span>/ 3 years</span></div>
+                    <div class="price-container">
+                        <div class="original-price">$500</div>
+                        <div class="price">$375</div>
+                        <div class="discount-badge">Save $125</div>
+                    </div>
                     <div class="duration">Best value for growing professionals</div>
                     <ul>
                         <li>New Design Every Year</li>
@@ -1147,7 +1742,11 @@
                 <!-- 5 Year Package -->
                 <div class="service-card">
                     <h3>Premium Package</h3>
-                    <div class="price">$500 <span>/ 5 years</span></div>
+                    <div class="price-container">
+                        <div class="original-price">$700</div>
+                        <div class="price">$500</div>
+                        <div class="discount-badge">Save $200</div>
+                    </div>
                     <div class="duration">Complete career solution</div>
                     <ul>
                         <li>Annual Redesigns</li>
@@ -1452,11 +2051,6 @@
         </div>
     </footer>
 
-    <!-- Scroll to top button -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
     <script>
         // Mobile Navigation Toggle
         const mobileNavToggle = document.getElementById('mobileNavToggle');
@@ -1477,25 +2071,69 @@
             });
         });
         
-        // Smooth scrolling for anchor links
+        // Modal functionality
+        const modal = document.getElementById('packageModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalPackageTitle');
+        const paymentButton = document.getElementById('modalPaymentButton');
+        
+        // Payment links for each package
+        const paymentLinks = {
+            'Starter Package': '#starter-payment-link',
+            'Professional Package': '#professional-payment-link',
+            'Premium Package': '#premium-payment-link'
+        };
+        
+        function openModal(packageName, price) {
+            modalTitle.textContent = packageName;
+            paymentButton.textContent = `Pay $${price}`;
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('show');
+            
+            // Set up payment button click handler
+            paymentButton.onclick = function() {
+                window.location.href = paymentLinks[packageName];
+            };
+            
+            // Close mobile nav if open
+            mobileNav.classList.remove('active');
+            mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+        
+        function closeModalFunc() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Smooth scrolling for anchor links (disabled for mobile)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                if (window.innerWidth > 1024) { // Only for desktop
+                    e.preventDefault();
                     
-                    // Update active nav link
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
                 }
             });
         });
@@ -1542,6 +2180,33 @@
                 contactForm.reset();
             });
         }
+        
+        // Add ripple effect to buttons
+        const buttons = document.querySelectorAll('.cta-button, .card-button, .modal-payment-button, .contact-form button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+            });
+        });
+        
+        // Prevent horizontal scrolling
+        window.addEventListener('scroll', function() {
+            if (window.scrollX !== 0) {
+                window.scrollTo(0, window.scrollY);
+            }
+        });
     </script>
 </body>
 </html>
