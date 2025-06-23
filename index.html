@@ -2058,7 +2058,7 @@
                 <div class="contact-details">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:contact.logiclinksolutions@gmail.com" style="color: var(--gray); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
+                        <a href="mailto:contact.logiclinksolutions@gmail.com">
                             contact.logiclinksolutions@gmail.com
                         </a>
                     </div>
@@ -2070,30 +2070,67 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form action="https://formsubmit.co/contact.logiclinksolutions@gmail.com" method="POST">
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="New Contact Request - LogicLink Solutions">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="_honey" style="display:none"> <!-- Honeypot for spam -->
-                    
-                    <!-- Form Fields -->
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <select name="service" required>
+                <form id="contactForm">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <select id="service" name="service" required>
                         <option value="" disabled selected>Interested In...</option>
                         <option value="starter">Starter Package</option>
                         <option value="professional">Professional Package</option>
                         <option value="premium">Premium Package</option>
                         <option value="custom">Custom Solution</option>
                     </select>
-                    <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-                    <button type="submit">Send Message</button>
+                    <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+                    
+                    <button type="button" onclick="sendToGmail()">
+                        <i class="fab fa-google"></i> Send via Gmail
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    function sendToGmail() {
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+        
+        // Format email content
+        const subject = `New ${service} Inquiry from ${name}`;
+        const body = `Name: ${name}%0AEmail: ${email}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+        
+        // Encode special characters
+        const encodedSubject = encodeURIComponent(subject);
+        const encodedBody = encodeURIComponent(body.replace(/\n/g, '%0A'));
+        
+        // Open Gmail compose window
+        window.open(`https://mail.google.com/mail/?view=cm&to=contact.logiclinksolutions@gmail.com&su=${encodedSubject}&body=${encodedBody}`);
+    }
+</script>
+<script>
+    function sendToGmail() {
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+        
+        // Format email content
+        const subject = `New ${service} Inquiry from ${name}`;
+        const body = `Name: ${name}%0AEmail: ${email}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+        
+        // Encode special characters
+        const encodedSubject = encodeURIComponent(subject);
+        const encodedBody = encodeURIComponent(body.replace(/\n/g, '%0A'));
+        
+        // Open Gmail compose window
+        window.open(`https://mail.google.com/mail/?view=cm&to=contact.logiclinksolutions@gmail.com&su=${encodedSubject}&body=${encodedBody}`);
+    }
+</script>
    <footer>
         <div class="container">
             <div class="footer-container">
