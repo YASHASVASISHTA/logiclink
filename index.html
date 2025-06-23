@@ -2044,52 +2044,57 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Our Team</h2>
-                <p>Ready to elevate your professional online presence? Get in touch today.</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Discuss Your Project</h3>
-                    <p>Whether you're a student preparing for graduation, applying for internships, or a freelancer building your brand, we have the perfect solution for you.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:contact.logiclinksolutions@gmail.com" style="color: var(--gray); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
-                                contact.logiclinksolutions@gmail.com
-                            </a>
-                        </div>
-                        </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/logic-link-solutions/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/logiclink_solutions/"><i class="fab fa-instagram"></i></a>
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contact Our Team</h2>
+            <p>Ready to elevate your professional online presence? Get in touch today.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's Discuss Your Project</h3>
+                <p>Whether you're a student preparing for graduation, applying for internships, or a freelancer building your brand, we have the perfect solution for you.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact.logiclinksolutions@gmail.com" style="color: var(--gray); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
+                            contact.logiclinksolutions@gmail.com
+                        </a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Email Address" required>
-                        <select required>
-                            <option value="" disabled selected>Interested In...</option>
-                            <option value="starter">Starter Package</option>
-                            <option value="professional">Professional Package</option>
-                            <option value="premium">Premium Package</option>
-                            <option value="custom">Custom Solution</option>
-                        </select>
-                        <textarea placeholder="Tell us about your project..." required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/logic-link-solutions/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/logiclink_solutions/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            <div class="contact-form">
+                <form action="https://formsubmit.co/contact.logiclinksolutions@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Contact Request - LogicLink Solutions">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none"> <!-- Honeypot for spam -->
+                    
+                    <!-- Form Fields -->
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <select name="service" required>
+                        <option value="" disabled selected>Interested In...</option>
+                        <option value="starter">Starter Package</option>
+                        <option value="professional">Professional Package</option>
+                        <option value="premium">Premium Package</option>
+                        <option value="custom">Custom Solution</option>
+                    </select>
+                    <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
+    </div>
+</section>
+   <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
