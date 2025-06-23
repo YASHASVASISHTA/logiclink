@@ -2148,6 +2148,13 @@
         mobileNav.classList.toggle('active');
         mobileNavToggle.innerHTML = mobileNav.classList.contains('active') ? 
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        
+        // Toggle body scroll when mobile nav is open
+        if (mobileNav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
     
     // Close mobile nav when clicking on a link
@@ -2156,6 +2163,7 @@
         link.addEventListener('click', () => {
             mobileNav.classList.remove('active');
             mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
         });
     });
     
@@ -2176,13 +2184,6 @@
         modalTitle.textContent = packageName;
         paymentButton.textContent = `Pay $${price}`;
         document.body.style.overflow = 'hidden';
-        
-        // Lock scroll position on mobile
-        if (window.innerWidth <= 768) {
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${window.scrollY}px`;
-        }
-        
         modal.classList.add('show');
         
         // Set up payment button click handler
@@ -2193,19 +2194,12 @@
         // Close mobile nav if open
         mobileNav.classList.remove('active');
         mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = 'hidden';
     }
     
     function closeModalFunc() {
         modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-        
-        // Restore scroll position on mobile
-        if (window.innerWidth <= 768) {
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
+        document.body.style.overflow = '';
     }
     
     closeModal.addEventListener('click', closeModalFunc);
@@ -2216,34 +2210,46 @@
         }
     });
     
-    // Prevent horizontal scrolling on touch devices
+    // Prevent horizontal scrolling while allowing vertical
+    let startX;
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+    
     document.addEventListener('touchmove', function(e) {
-        if (window.innerWidth <= 768) {
+        const currentX = e.touches[0].clientX;
+        const diffX = Math.abs(currentX - startX);
+        
+        // Only prevent horizontal scrolling
+        if (diffX > 5 && !modal.classList.contains('show')) {
             e.preventDefault();
         }
     }, { passive: false });
     
-    // Smooth scrolling for anchor links (disabled for mobile)
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            if (window.innerWidth > 1024) { // Only for desktop
-                e.preventDefault();
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Close mobile nav if open
+                mobileNav.classList.remove('active');
+                mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
+                // Update active nav link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
             }
         });
     });
@@ -2311,19 +2317,12 @@
         });
     });
     
-    // Prevent horizontal scrolling
+    // Prevent accidental horizontal scrolling
     window.addEventListener('scroll', function() {
         if (window.scrollX !== 0) {
             window.scrollTo(0, window.scrollY);
         }
     });
-    
-    // Lock body scroll when modal is open (for iOS)
-    document.addEventListener('touchmove', function(e) {
-        if (modal.classList.contains('show')) {
-            e.preventDefault();
-        }
-    }, { passive: false });
 </script>
 </body>
 </html>
