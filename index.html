@@ -1187,60 +1187,138 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
-        
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--light);
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-        
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-        
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-form button {
-            background-color: var(--primary);
-            color: var(--light);
-            border: none;
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 15px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-form button:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-        
-        .contact-form button:active {
-            transform: translateY(0);
-        }
-        
+        .contact-form {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .field {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--light);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--light);
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form #button {
+    background-color: var(--primary);
+    color: var(--light);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form #button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.contact-form #button:active {
+    transform: translateY(0);
+}
+
+/* For the dropdown/select if you add one later */
+.contact-form select {
+    width: 100%;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--light);
+    font-size: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea,
+    .contact-form select {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .contact-form #button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 15px;
+    }
+    
+    .contact-form label {
+        font-size: 0.9rem;
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea,
+    .contact-form select {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .contact-form #button {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
         /* Footer */
         footer {
             background-color: #020617;
@@ -2074,58 +2152,56 @@
       </div>
 
       <div class="contact-form">
-        <form id="contactForm">
-          <input type="text" id="name" name="name" placeholder="Your Name" required />
-          <input type="email" id="email" name="email" placeholder="Your Email" required />
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select Service</option>
-            <option value="starter">Starter</option>
-            <option value="pro">Pro</option>
-          </select>
-          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
+        <form id="form">
+  <div class="field">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+  </div>
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="6" cols="40" placeholder="Write your message..."></textarea>
+  </div>
+
+  <input type="submit" id="button" value="Send Email" >
+</form>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('4KeT71nYUhMsN-KJJ')
+</script>
       </div>
     </div>
   </div>
 
   <!-- EmailJS Script (must be after form) -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      emailjs.init("4KeT71nYUhMsN-KJJ"); // ✅ Replace with your public key
+ <script>
+    const btn = document.getElementById('button');
 
-      const form = document.getElementById("contactForm");
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
+   btn.value = 'Sending...';
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const service = document.getElementById("service").value;
-        const message = document.getElementById("message").value;
+   const serviceID = 'default_service';
+   const templateID = 'template_g20p8kb';
 
-        const params = {
-          name,
-          email,
-          service,
-          message
-        };
-
-        console.log("📨 Sending data:", params); // ✅ Debug
-
-        emailjs.send("service_6f6v3dc", "template_g20p8kb", params)
-          .then(() => {
-            alert("✅ Email sent successfully!");
-            form.reset();
-          })
-          .catch((error) => {
-            console.error("❌ Email failed:", error);
-            alert("❌ Failed to send email.");
-          });
-      });
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
     });
-  </script>
+});
+ </script>
 </section>
 
    <footer>
