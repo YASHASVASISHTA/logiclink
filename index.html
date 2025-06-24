@@ -1748,19 +1748,21 @@
                 </div>
             </div>
             
-            <div class="modal-form">
-                <input type="text" placeholder="Your Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Phone Number" required>
-                <textarea placeholder="Tell us about your website requirements..." required></textarea>
-                <select required>
-                    <option value="" disabled selected>Select Your Industry</option>
-                    <option value="student">Final Year Student</option>
-                    <option value="internship">Designer Portfolio</option>
-                    <option value="freelancer">Freelancer</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
+           <div class="modal-form">
+                    <input type="text" id="modalName" placeholder="Your Full Name" required>
+                    <input type="email" id="modalEmail" placeholder="Email Address" required>
+                    <input type="text" id="modalPhone" placeholder="Phone Number" required>
+                    <textarea id="modalRequirements" placeholder="Tell us about your website requirements..." required></textarea>
+                    <select id="modalIndustry" required>
+                        <option value="" disabled selected>Select Your Industry</option>
+                        <option value="student">Final Year Student</option>
+                        <option value="internship">Designer Portfolio</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="hidden" id="modalPackage" value="">
+                    <input type="hidden" id="modalPrice" value="">
+            </div> 
             
             <div class="modal-payment">
                 <button class="modal-payment-button" id="modalPaymentButton">Pay $150</button>
@@ -2282,11 +2284,6 @@ document.getElementById('form')
     const paymentButton = document.getElementById('modalPaymentButton');
     
     // Payment links for each package
-    const paymentLinks = {
-        'Starter Package': 'https://www.paypal.com/ncp/payment/JU98DZM9AS3W8',
-        'Professional Package': 'https://www.paypal.com/ncp/payment/MP9ZGB4UBNNQJ',
-        'Premium Package': 'https://www.paypal.com/ncp/payment/CZQ5F2CDB7N4U'
-    };
     
     function openModal(packageName, price) {
         modalTitle.textContent = packageName;
@@ -2431,6 +2428,81 @@ document.getElementById('form')
             window.scrollTo(0, window.scrollY);
         }
     });
+</script>
+<script>
+// Update the openModal function
+// Update the openModal function
+function openModal(packageName, price) {
+    modalTitle.textContent = packageName;
+    paymentButton.textContent = `Pay $${price}`;
+    document.getElementById('modalPackage').value = packageName;
+    document.getElementById('modalPrice').value = price;
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('show');
+    
+    // Close mobile nav if open
+    mobileNav.classList.remove('active');
+    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    document.body.style.overflow = 'hidden';
+}
+
+// Update the payment button click handler
+paymentButton.addEventListener('click', function() {
+    // Get form data
+    const formData = {
+        name: document.getElementById('modalName').value,
+        email: document.getElementById('modalEmail').value,
+        phone: document.getElementById('modalPhone').value,
+        requirements: document.getElementById('modalRequirements').value,
+        industry: document.getElementById('modalIndustry').value,
+        package: document.getElementById('modalPackage').value,
+        price: document.getElementById('modalPrice').value
+    };
+    
+    // Validate form
+    if (!formData.name || !formData.email || !formData.phone) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    // Change button text
+    paymentButton.textContent = 'Processing...';
+    paymentButton.disabled = true;
+    
+    // Send email via EmailJS
+    emailjs.send('default_service', 'template_g20p8kb', {
+        name: formData.name,
+        email: formData.email,
+        service: `${formData.package} ($${formData.price})`,
+        message: `Phone: ${formData.phone}\nIndustry: ${formData.industry}\nRequirements: ${formData.requirements}`,
+        title: `New ${formData.package} Purchase`
+    })
+    
+     emailjs.send('default_service', 'template_7zh6qjy', {
+            email: formData.email,
+            to_name: formData.name,
+            package_name: formData.package,
+            package_price: formData.price
+        });
+            
+
+
+        // Open payment link after email is sent
+        window.location.href = paymentLinks[formData.package];
+    }, (err) => {
+        paymentButton.textContent = `Pay $${formData.price}`;
+        paymentButton.disabled = false;
+        alert('Error sending details. Please try again or contact us directly.');
+        console.error('EmailJS Error:', err);
+    });
+
+
+// Update your paymentLinks object to include all packages
+const paymentLinks = {
+    'Starter Package': 'https://www.paypal.com/ncp/payment/JU98DZM9AS3W8',
+    'Professional Package': 'https://www.paypal.com/ncp/payment/MP9ZGB4UBNNQJ',
+    'Premium Package': 'https://www.paypal.com/ncp/payment/CZQ5F2CDB7N4U'
+};
 </script>
 
 </body>
