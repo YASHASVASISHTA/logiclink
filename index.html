@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogicLink Solutions | Professional Web Development</title>
@@ -2044,93 +2045,89 @@
     </section>
 
     <!-- Contact Section -->
+
 <section class="contact" id="contact">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contact Our Team</h2>
-            <p>Ready to elevate your professional online presence? Get in touch today.</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's Discuss Your Project</h3>
-                <p>Whether you're a student preparing for graduation, applying for internships, or a freelancer building your brand, we have the perfect solution for you.</p>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:contact.logiclinksolutions@gmail.com">
-                            contact.logiclinksolutions@gmail.com
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/company/logic-link-solutions/"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/logiclink_solutions/"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="email" id="email" name="email" placeholder="Email Address" required>
-                    <select id="service" name="service" required>
-                        <option value="" disabled selected>Interested In...</option>
-                        <option value="starter">Starter Package</option>
-                        <option value="professional">Professional Package</option>
-                        <option value="premium">Premium Package</option>
-                        <option value="custom">Custom Solution</option>
-                    </select>
-                    <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
-                    
-                    <button type="button" onclick="sendToGmail()">
-                        <i class="fab fa-google"></i> Send via Gmail
-                    </button>
-                </form>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-title">
+      <h2>Contact Our Team</h2>
+      <p>Ready to elevate your professional online presence? Get in touch today.</p>
     </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Discuss Your Project</h3>
+        <p>
+          Whether you're a student preparing for graduation, applying for internships, or a freelancer building your brand, we have the perfect solution for you.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:contact.logiclinksolutions@gmail.com">contact.logiclinksolutions@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/logic-link-solutions/"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/logiclink_solutions/"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form id="contactForm">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select Service</option>
+            <option value="starter">Starter</option>
+            <option value="pro">Pro</option>
+          </select>
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- EmailJS Script (must be after form) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("4KeT71nYUhMsN-KJJ"); // ✅ Replace with your public key
+
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+
+        const params = {
+          name,
+          email,
+          service,
+          message
+        };
+
+        console.log("📨 Sending data:", params); // ✅ Debug
+
+        emailjs.send("service_6f6v3dc", "template_g20p8kb", params)
+          .then(() => {
+            alert("✅ Email sent successfully!");
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("❌ Email failed:", error);
+            alert("❌ Failed to send email.");
+          });
+      });
+    });
+  </script>
 </section>
 
-<script>
-    function sendToGmail() {
-        // Get form values
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const service = document.getElementById("service").value;
-        const message = document.getElementById("message").value;
-        
-        // Format email content
-        const subject = `New ${service} Inquiry from ${name}`;
-        const body = `Name: ${name}%0AEmail: ${email}%0AService: ${service}%0A%0AMessage:%0A${message}`;
-        
-        // Encode special characters
-        const encodedSubject = encodeURIComponent(subject);
-        const encodedBody = encodeURIComponent(body.replace(/\n/g, '%0A'));
-        
-        // Open Gmail compose window
-        window.open(`https://mail.google.com/mail/?view=cm&to=contact.logiclinksolutions@gmail.com&su=${encodedSubject}&body=${encodedBody}`);
-    }
-</script>
-<script>
-    function sendToGmail() {
-        // Get form values
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const service = document.getElementById("service").value;
-        const message = document.getElementById("message").value;
-        
-        // Format email content
-        const subject = `New ${service} Inquiry from ${name}`;
-        const body = `Name: ${name}%0AEmail: ${email}%0AService: ${service}%0A%0AMessage:%0A${message}`;
-        
-        // Encode special characters
-        const encodedSubject = encodeURIComponent(subject);
-        const encodedBody = encodeURIComponent(body.replace(/\n/g, '%0A'));
-        
-        // Open Gmail compose window
-        window.open(`https://mail.google.com/mail/?view=cm&to=contact.logiclinksolutions@gmail.com&su=${encodedSubject}&body=${encodedBody}`);
-    }
-</script>
    <footer>
         <div class="container">
             <div class="footer-container">
@@ -2172,6 +2169,8 @@
             </div>
         </div>
     </footer>
+
+
 <script>
     // Mobile Navigation Toggle
     const mobileNavToggle = document.getElementById('mobileNavToggle');
@@ -2208,7 +2207,7 @@
     
     // Payment links for each package
     const paymentLinks = {
-        'Starter Package': 'https://www.sandbox.paypal.com/ncp/payment/L9SJRF5BGH3P6',
+        'Starter Package': 'https://www.paypal.com/ncp/payment/JU98DZM9AS3W8',
         'Professional Package': 'https://www.paypal.com/ncp/payment/MP9ZGB4UBNNQJ',
         'Premium Package': 'https://www.paypal.com/ncp/payment/CZQ5F2CDB7N4U'
     };
@@ -2357,5 +2356,6 @@
         }
     });
 </script>
+
 </body>
 </html>
