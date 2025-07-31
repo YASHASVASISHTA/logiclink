@@ -2436,7 +2436,7 @@ document.getElementById('form')
 // Update the openModal function
 function openModal(packageName, price) {
     modalTitle.textContent = packageName;
-    paymentButton.textContent = `Pay $${price}`;
+    paymentButton.textContent = `Pay $₹{price}`;
     document.getElementById('modalPackage').value = packageName;
     document.getElementById('modalPrice').value = price;
     document.body.style.overflow = 'hidden';
@@ -2475,7 +2475,7 @@ paymentButton.addEventListener('click', function() {
     emailjs.send('default_service', 'template_g20p8kb', {
         name: formData.name,
         email: formData.email,
-        service: `${formData.package} ($${formData.price})`,
+        service: `${formData.package} ($₹{formData.price})`,
         message: `Phone: ${formData.phone}\nIndustry: ${formData.industry}\nRequirements: ${formData.requirements}`,
         title: `New ${formData.package} Purchase`
     })
@@ -2492,7 +2492,7 @@ paymentButton.addEventListener('click', function() {
         // Open payment link after email is sent
         window.location.href = paymentLinks[formData.package];
     }, (err) => {
-        paymentButton.textContent = `Pay $${formData.price}`;
+        paymentButton.textContent = `Pay $₹{formData.price}`;
         paymentButton.disabled = false;
         alert('Error sending details. Please try again or contact us directly.');
         console.error('EmailJS Error:', err);
