@@ -1872,9 +1872,9 @@
                 <div class="service-card">
                     <h3>Starter Package</h3>
                     <div class="price-container">
-                        <div class="original-price">2500</div>
-                        <div class="price">1000</div>
-                        <div class="discount-badge">Save 1500</div>
+                        <div class="original-price">₹2500</div>
+                        <div class="price">₹1000</div>
+                        <div class="discount-badge">Save ₹1500</div>
                     </div>
                     <div class="duration">Ideal for short-term projects</div>
                     <ul>
@@ -1887,16 +1887,16 @@
                         <li>Technical Email Support</li>
                         <li>Hosting on Vercel</li>
                     </ul>
-                    <button class="card-button" onclick="openModal('Starter Package', 200)">Get This Package</button>
+                    <button class="card-button" onclick="openModal('Starter Package', 1000)">Get This Package</button>
                 </div>
                 
                 <!-- 3 Year Package -->
                 <div class="service-card">
                     <h3>Professional Package</h3>
                     <div class="price-container">
-                        <div class="original-price">5500</div>
-                        <div class="price">2200</div>
-                        <div class="discount-badge">Save 3300</div>
+                        <div class="original-price"₹>5500</div>
+                        <div class="price">₹2200</div>
+                        <div class="discount-badge">Save ₹3300</div>
                     </div>
                     <div class="duration">Best value for growing professionals</div>
                     <ul>
@@ -1909,16 +1909,16 @@
                         <li>Technical Email Support</li>
                         <li>Hosting on Vercel</li>
                     </ul>
-                    <button class="card-button" onclick="openModal('Professional Package', 400)">Get This Package</button>
+                    <button class="card-button" onclick="openModal('Professional Package',2200)">Get This Package</button>
                 </div>
                 
                 <!-- 5 Year Package -->
                 <div class="service-card">
                     <h3>Premium Package</h3>
                     <div class="price-container">
-                        <div class="original-price">8000</div>
-                        <div class="price">3400</div>
-                        <div class="discount-badge">Save 4600</div>
+                        <div class="original-price">₹8000</div>
+                        <div class="price">₹3400</div>
+                        <div class="discount-badge">Save ₹4600</div>
                     </div>
                     <div class="duration">Complete career solution</div>
                     <ul>
@@ -1931,7 +1931,7 @@
                         <li>Technical Email Support</li>
                         <li>Hosting on Vercel</li>
                     </ul>
-                    <button class="card-button" onclick="openModal('Premium Package', 600)">Get This Package</button>
+                    <button class="card-button" onclick="openModal('Premium Package', 3400)">Get This Package</button>
                 </div>
             </div>
         </div>
@@ -2289,7 +2289,7 @@ document.getElementById('form')
     
     function openModal(packageName, price) {
         modalTitle.textContent = packageName;
-        paymentButton.textContent = `Pay $${price}`;
+        paymentButton.textContent = `Pay ₹{price}`;
         document.body.style.overflow = 'hidden';
         modal.classList.add('show');
         
